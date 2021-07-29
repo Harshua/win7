@@ -16,17 +16,17 @@ echo "Windows 7"
 
 nohup ./ngrok tcp --region eu 30889 &>/dev/null &
 
-yum install sudo -y
+
 
 echo "Downloading QEMU"
 
-sudo yum install -y qemu-kvm
+
 
 link1_status=$(curl -Is -k https://app.vagrantup.com/thuonghai2711/boxes/WindowsQCOW2/versions/1.0.3/providers/qemu.box | grep HTTP | cut -f2 -d" " | head -1)
 
 link2_status=$(curl -Is -k https://transfer.sh/1imYuZo/lite7.qcow2 | grep HTTP | cut -f2 -d" ")
 
-sudo wget -O lite7.qcow2 https://app.vagrantup.com/thuonghai2711/boxes/WindowsQCOW2/versions/1.0.3/providers/qemu.box
+ wget -O lite7.qcow2 https://app.vagrantup.com/thuonghai2711/boxes/WindowsQCOW2/versions/1.0.3/providers/qemu.box
 
 [ -s lite7.qcow2 ] || sudo wget -O lite7.qcow2 https://transfer.sh/1imYuZo/lite7.qcow2
 
@@ -38,7 +38,7 @@ custom_param_ram="-m "$(expr $availableRAM - 856 )"M"
 
 cpus=$(lscpu | grep CPU\(s\) | head -1 | cut -f2 -d":" | awk '{$1=$1;print}')
 
-nohup sudo /usr/libexec/qemu-kvm -nographic -net nic -net user,hostfwd=tcp::30889-:3389 -show-cursor $custom_param_ram -localtime -enable-kvm -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,+nx -M pc -smp cores=$cpus -vga std -machine type=pc,accel=kvm -usb -device usb-tablet -k en-us -drive file=lite7.qcow2,index=0,media=disk,format=qcow2,if=virtio -boot once=d &>/dev/null &
+nohup /usr/libexec/qemu-kvm -nographic -net nic -net user,hostfwd=tcp::30889-:3389 -show-cursor $custom_param_ram -localtime -enable-kvm -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,+nx -M pc -smp cores=$cpus -vga std -machine type=pc,accel=kvm -usb -device usb-tablet -k en-us -drive file=lite7.qcow2,index=0,media=disk,format=qcow2,if=virtio -boot once=d &>/dev/null &
 
 clear
 
