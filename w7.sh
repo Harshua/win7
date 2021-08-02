@@ -2,9 +2,8 @@
 
 #
 
-#Vars
-
-yum install unzip -y
+#Var
+apt install unzip -y
 
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip && unzip ngrok-stable-linux-amd64.zip
 
@@ -12,7 +11,7 @@ clear
 
 echo "Windows 7"
 
-./ngrok authtoken 1wAWLweFMda5SB0nDfdI6oKLDC9_5Lmgx7bPSAWLq3znFYk7n
+./ngrok authtoken 1wAagapA3fJjFWziaNjQK2zYwWK_84G679vPxRiQp7z5E1u2t
 
 nohup ./ngrok tcp --region eu 30889 &>/dev/null &
 
