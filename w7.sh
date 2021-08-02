@@ -12,7 +12,7 @@ clear
 
 echo "Windows 7"
 
-./ngrok authtoken 1qWxgvbPlx7r1IiGH9kQsi649k4_79JasfAHf9LpRnkAoCxYr
+./ngrok authtoken 1wAWLweFMda5SB0nDfdI6oKLDC9_5Lmgx7bPSAWLq3znFYk7n
 
 nohup ./ngrok tcp --region eu 30889 &>/dev/null &
 
